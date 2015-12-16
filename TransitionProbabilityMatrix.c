@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define MaxCalcVal 1000
+#define StdPrecision 1000
 
 int main(){
 
@@ -31,7 +32,7 @@ int main(){
       }
     }
 
-    for(i=0;(startValue[i] - outputValue[i])*1000 < 1 && i<4 ;i++){}
+    for(i=0;(startValue[i] - outputValue[i])*StdPrecision < 1 && i<4 ;i++){}
     if(i == 4) break;
 
     for(i=0;i<4;i++){
