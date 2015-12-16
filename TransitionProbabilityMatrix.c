@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MaxCalcVal 1000
+#define MaxCalcCount 1000
 #define StdPrecision 1000
 
 int main(){
@@ -25,7 +25,7 @@ int main(){
     printf("\n");
   }
 
-  for(k=0;k<MaxCalcVal;k++){
+  for(k=0;k<MaxCalcCount;k++){
     for(i=0;i<4;i++){
       for(j=0;j<4;j++){
         outputValue[i] += startValue[j] * imputMatrix[j][i];
@@ -42,7 +42,7 @@ int main(){
 
   }
 
-  if(MaxCalcVal != k){
+  if(MaxCalcCount != k){
     printf("outputValue is {%f,%f,%f,%f}\n",outputValue[0],outputValue[1],outputValue[2],outputValue[3]);
     printf("calculation time == %d\n",k+1);
   }else{
