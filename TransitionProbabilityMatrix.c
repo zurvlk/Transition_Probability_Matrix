@@ -1,25 +1,20 @@
 #include <stdio.h>
+#define MaxCalcVal 1000
 
 int main(){
-  int i,j,k,l=0;
+
+  int i,j,k=0;
   double sum;
   double imputMatrix[4][4];
   double startValue[4] = {1,0,0,0};
   double outputValue[4];
 
-  printf("Please imput 4*4 transition probability matrix\n");
-
+  printf("Transition Pribability Matrix 4*4\n");
   for(i=0;i<4;i++){
-    do{
-      printf("please imput row No.%d\n",i+1);
-      scanf("%lf %lf %lf %lf",&imputMatrix[i][0],&imputMatrix[i][1],&imputMatrix[i][2],&imputMatrix[i][3]);
-      sum = imputMatrix[i][0]+imputMatrix[i][1]+imputMatrix[i][2]+imputMatrix[i][3];
-      if(sum != 1) printf("Error row's sum is not 1. Please try again\n");
-    }while(sum != 1);
+    printf("please imput row No.%d\n",i+1);
+    scanf("%lf %lf %lf %lf",&imputMatrix[i][0],&imputMatrix[i][1],&imputMatrix[i][2],&imputMatrix[i][3]);
+    sum = imputMatrix[i][0]+imputMatrix[i][1]+imputMatrix[i][2]+imputMatrix[i][3];
   }
-
-  printf("max calculation times >");
-  scanf("%d",&k);
 
   printf("your imput is\n");
   for(i=0;i<4;i++){
@@ -29,38 +24,26 @@ int main(){
     printf("\n");
   }
 
-
-  while(1){
+  for(k=0;k<MaxCalcVal;k++){
     for(i=0;i<4;i++){
       for(j=0;j<4;j++){
         outputValue[i] += startValue[j] * imputMatrix[j][i];
       }
     }
 
-    if((startValue[0] - outputValue[0])*1000 < 1){
-      if((startValue[1] - outputValue[1])*1000 < 1){
-        if((startValue[2] - outputValue[2])*1000 < 1){
-          if((startValue[3] - outputValue[3])*1000 < 1){
-            break;
-          }
-        }
-      }
-    }
+    for(i=0;(startValue[i] - outputValue[i])*1000 < 1 && i<4 ;i++){}
+    if(i == 4) break;
 
     for(i=0;i<4;i++){
       startValue[i] = outputValue[i];
       outputValue[i] = 0;
     }
 
-
-    l++;
-    if(l == k) break;
-
   }
 
-  if(l != k){
+  if(MaxCalcVal != k){
     printf("outputValue is {%f,%f,%f,%f}\n",outputValue[0],outputValue[1],outputValue[2],outputValue[3]);
-    printf("calculation time == %d\n",l);
+    printf("calculation time == %d\n",k+1);
   }else{
     printf("Error Over max calculation times. Prease cheak your imput matrix or max calculation times\n");
   }
