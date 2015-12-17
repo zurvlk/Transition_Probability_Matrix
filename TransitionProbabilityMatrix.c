@@ -8,7 +8,7 @@ int main(){
   int cheakRowsSum;
 
 
-  printf("Please imput Transition Pribability Matrix n*n (n>=2): n>");
+  printf("Please imput Transition-Pribability-Matrix's order(n>=2): n>");
   scanf("%d",&n);
 
   if(n>=2){
