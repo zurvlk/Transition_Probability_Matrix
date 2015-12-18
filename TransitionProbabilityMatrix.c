@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define MaxCalcCount 1000
-#define StdPrecision 1000
+#define MaxCalcCount 1000 //最大計算回数
+#define StdPrecision 1000 //精度
 
 int main(){
 
@@ -24,11 +24,27 @@ int main(){
 
     printf("Transition Pribability Matrix %d*%d\n",n,n);
     for(i=0;i<n;i++){
-      for(j=0;j<n;j++){
-        printf("Prease imput Matrix element (%d,%d) >",i+1,j+1);
-        scanf("%lf",&imputMatrix[i][j]);
-        rowsSum[i] += imputMatrix[i][j];
-      }
+
+      do{
+        rowsSum[i]=0;
+        printf("Prease imput Matrix element (%d,1)~(%d,%d) > ",i+1,i+1,n);
+        for(j=0;j<n;j++){
+          scanf("%lf",&imputMatrix[i][j]);
+          rowsSum[i] += imputMatrix[i][j];
+        }
+
+        if(rowsSum[i] != 1){
+          do{
+            k++;
+            printf("\nWarning! Row's sum is not 1.\n");
+            printf("1.Imput once again\n");
+            printf("2.Neglect this message\n");
+            printf("Select item (1or2):");
+            scanf("%d",&cheakRowsSum);
+            printf("\n");
+          }while(cheakRowsSum != 1 && cheakRowsSum != 2);
+        }
+      }while(rowsSum[i] != 1 && cheakRowsSum != 2);
     }
 
     printf("\nyour imput is\n");
