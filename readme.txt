@@ -1,4 +1,4 @@
-Transition Probability Matrix
+TransitionProbabilityMatrix.c
 確立遷移行列から定常状態を求めます
 課題用の急造品なので使い勝手とかは一切考えておりませぬ
 
