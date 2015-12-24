@@ -8,7 +8,7 @@ int main(){
   int cheakRowsSum;
 
 
-  printf("Please imput Transition-Pribability-Matrix's order(n>=2): n>");
+  printf("Please input Transition-Probability-Matrix's order(n>=2): n>");
   scanf("%d",&n);
 
   if(n>=2){
@@ -22,12 +22,12 @@ int main(){
       startValue[i] = 0;
     }
 
-    printf("Transition Pribability Matrix %d*%d\n",n,n);
+    printf("Transition Probability Matrix %d*%d\n",n,n);
     for(i=0;i<n;i++){
 
       do{
         rowsSum[i]=0;
-        printf("Prease imput Matrix element (%d,1)~(%d,%d) > ",i+1,i+1,n);
+        printf("Please input Matrix element (%d,1)~(%d,%d) > ",i+1,i+1,n);
         for(j=0;j<n;j++){
           scanf("%lf",&imputMatrix[i][j]);
           rowsSum[i] += imputMatrix[i][j];
@@ -37,7 +37,7 @@ int main(){
           do{
             k++;
             printf("\nWarning! Row's sum is not 1.\n");
-            printf("1.Imput once again\n");
+            printf("1.Input once again\n");
             printf("2.Neglect this message\n");
             printf("Select item (1or2):");
             scanf("%d",&cheakRowsSum);
@@ -47,7 +47,7 @@ int main(){
       }while(rowsSum[i] != 1 && cheakRowsSum != 2);
     }
 
-    printf("\nyour imput is\n");
+    printf("\nyour input is\n");
     for(i=0;i<n;i++){
       for(j=0;j<n;j++){
         printf("%f ",imputMatrix[i][j]);
@@ -62,7 +62,7 @@ int main(){
           outputValue[i] += startValue[j] * imputMatrix[j][i];
         }
       }
-      printf("%d times outputValue is {",k+1);
+      printf("%d times output value is {",k+1);
       for(i=0;i<n;i++){
         printf("%f",outputValue[i]);
         if(i != n-1) printf(",");
@@ -77,7 +77,7 @@ int main(){
     }
 
     if(MaxCalcCount != k){
-      printf("\noutputValue is {");
+      printf("\noutput value is {");
       for(i=0;i<n;i++){
         printf("%f",outputValue[i]);
         if(i != n-1) printf(",");
@@ -87,7 +87,7 @@ int main(){
       printf("calculation time == %d\n",k+1);
       return 0;
     }else{
-      printf("Error Over max calculation times. Prease cheak your imput matrix\n");
+      printf("Error Over max calculation times. Prease cheak your input matrix\n");
       return 1;
     }
   }else{
