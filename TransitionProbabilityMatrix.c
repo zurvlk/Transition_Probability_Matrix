@@ -2,10 +2,12 @@
 #define MaxCalcCount 1000 //最大計算回数
 #define StdPrecision 1000 //精度
 
-int main(){
+int main(void){
 
   int n,i,j,k=0;
   int cheakRowsSum;
+  double outputValueSum = 0;
+
 
 
   printf("Please input Transition-Probability-Matrix's order(n>=2): n>");
@@ -16,6 +18,7 @@ int main(){
     double startValue[n];
     double outputValue[n];
     double rowsSum[n];
+
 
     startValue[0] = 1;
     for(i=1;i<n;i++){
@@ -61,6 +64,7 @@ int main(){
         for(j=0;j<n;j++){
           outputValue[i] += startValue[j] * imputMatrix[j][i];
         }
+        outputValueSum += outputValue[i];
       }
       printf("%d times output value is {",k+1);
       for(i=0;i<n;i++){
@@ -68,15 +72,22 @@ int main(){
         if(i != n-1) printf(",");
       }
       printf("}\n");
+
+      if(outputValueSum != 1 ){
+        printf("\nError %f\n",outputValueSum);
+        break;
+      }
+      outputValueSum = 0;
+
       for(i=0;(startValue[i] - outputValue[i])*StdPrecision < 1 && i<n ;i++){}
       if(i == n) break;
+
       for(i=0;i<n;i++){
         startValue[i] = outputValue[i];
         outputValue[i] = 0;
       }
     }
-
-    if(MaxCalcCount != k){
+    if(MaxCalcCount != k && outputValueSum <= 1){
       printf("\noutput value is {");
       for(i=0;i<n;i++){
         printf("%f",outputValue[i]);
