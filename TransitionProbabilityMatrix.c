@@ -38,13 +38,17 @@ int main(void){
 
         if(rowsSum[i] != 1){
           do{
-            k++;
             printf("\nWarning! Row's sum is not 1.\n");
             printf("1.Input once again\n");
             printf("2.Neglect this message\n");
             printf("Select item (1or2):");
             scanf("%d",&cheakRowsSum);
             printf("\n");
+            if(k>=5){
+              printf("Error! Exit this program.");
+              return 1;
+            }
+            k++;
           }while(cheakRowsSum != 1 && cheakRowsSum != 2);
         }
       }while(rowsSum[i] != 1 && cheakRowsSum != 2);
